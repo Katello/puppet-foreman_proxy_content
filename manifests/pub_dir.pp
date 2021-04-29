@@ -8,7 +8,7 @@
 class foreman_proxy_content::pub_dir (
   String $pub_dir_options = '+FollowSymLinks +Indexes',
 ) {
-  ensure_packages('katello-client-bootstrap')
+  #ensure_packages('katello-client-bootstrap')
 
   pulpcore::apache::fragment{ 'pub_dir':
     http_content  => template('foreman_proxy_content/httpd_pub.erb'),

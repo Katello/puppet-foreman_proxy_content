@@ -142,11 +142,10 @@ class foreman_proxy_content (
     false => 443
   }
 
-  ensure_packages('katello-debug')
+  #ensure_packages('katello-debug')
 
-  class { 'certs::foreman_proxy':
-    notify => Service['foreman-proxy'],
-  }
+  include certs::foreman_proxy
+  Class['certs::foreman_proxy'] ~> Service['foreman-proxy']
 
   class { 'foreman_proxy_content::bootstrap_rpm':
     rhsm_port => $rhsm_port,
