@@ -160,6 +160,9 @@ Puppet::Type.type(:bootstrap_rpm).provide(:bootstrap_rpm) do
 
   def spec
     <<~HEREDOC
+      %global _binary_filedigest_algorithm md5
+      %global _source_filedigest_algorithm md5
+
       Name:      %{name}
       Version:   1.0
       Release:   %{release}
